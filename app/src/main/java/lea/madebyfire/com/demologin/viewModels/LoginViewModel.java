@@ -32,7 +32,8 @@ public class LoginViewModel extends LoginBaseViewModel implements LoginDelegate 
         if (TextUtils.isEmpty(password)) {
             return;
         }
-        loginViewDelegate.showProgressView(true);
+        loginViewDelegate.launchHomeScreen();
+        /*loginViewDelegate.showProgressView(true);
         loginDataManager.doLogin(phoneNo, password, new DataResponse<String>() {
             @Override
             public void onSuccess(String message) {
@@ -56,7 +57,7 @@ public class LoginViewModel extends LoginBaseViewModel implements LoginDelegate 
                 loginViewDelegate.showProgressView(false);
                 loginViewDelegate.showErrorMessage(errorMessage, MessageViewType.Toast);
             }
-        });
+        });*/
 
     }
 

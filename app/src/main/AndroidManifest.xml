@@ -22,9 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.RegisterActivity"
-            android:theme="@style/AppTheme.NoTitle"/>
-        <activity android:name=".activity.HomeActivity"/>
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name=".activity.HomeActivity" />
     </application>
 
 </manifest>

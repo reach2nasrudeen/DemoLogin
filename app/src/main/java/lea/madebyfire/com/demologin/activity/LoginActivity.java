@@ -4,6 +4,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +28,7 @@ public class LoginActivity extends BaseActivity implements LoginViewDelegate {
     private EditText textPhone;
     private EditText textPassword;
 
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,12 @@ public class LoginActivity extends BaseActivity implements LoginViewDelegate {
         initDialog();
         initView();
         setupListener();
+        initToolbar();
+    }
+
+    public void initToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolBar);
+        setSupportActionBar(toolbar);
     }
 
     private void initDialog() {
@@ -114,5 +124,29 @@ public class LoginActivity extends BaseActivity implements LoginViewDelegate {
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
         finish();
+    }
+
+    private Boolean exit = false;
+
+    @Override
+    public void onBackPressed() {
+        checkExit();
+    }
+
+
+    public void checkExit() {
+        if (exit) {
+            finish(); // finish activity
+        } else {
+            Toast.makeText(this, getString(R.string.press_again_to_exit),
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+        }
     }
 }
