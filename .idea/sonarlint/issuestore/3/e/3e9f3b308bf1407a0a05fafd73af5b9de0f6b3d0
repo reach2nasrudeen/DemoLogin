@@ -1,0 +1,10 @@
+
+Lsquid:S1444"2Make this "public static SERVICE_PATH" field final(¾ˆ¤üÿÿÿÿ
+Fsquid:S3010"%Remove this assignment of "BASE_URL".(¶Ò½ôüÿÿÿÿ8øôÆşÂ+
+msquid:S3008"SRename this field "BASE_URL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Éøªôøÿÿÿÿ
+Esquid:S3010")Remove this assignment of "SERVICE_PATH".(Ñ†›ÿ8øôÆşÂ+
+Hsquid:S1444".Make this "public static BASE_URL" field final(Éøªôøÿÿÿÿ
+2squid:S1118"Hide this public constructor.(Œ¦öĞ
+qsquid:S3008"WRename this field "SERVICE_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾ˆ¤üÿÿÿÿ
+]squid:S1075"ARefactor your code to get this URI from a customizable parameter.(Ñ†›ÿ8øôÆşÂ+
+Tsquid:S1313"3Make this IP "52.208.255.214" address configurable.(¶Ò½ôüÿÿÿÿ8øôÆşÂ+

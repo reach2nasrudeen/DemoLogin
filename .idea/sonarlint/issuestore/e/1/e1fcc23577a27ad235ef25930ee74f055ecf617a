@@ -1,0 +1,3 @@
+
+zsquid:S1450"^Remove the "mSessionManager" field and declare it as a local variable in the relevant methods.(Çæôİ8÷ÊÂşÂ+
+Osquid:S1068"3Remove this unused "mSessionManager" private field.(Çæôİ8÷ÊÂşÂ+
