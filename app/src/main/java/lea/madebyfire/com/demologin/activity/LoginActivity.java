@@ -16,19 +16,25 @@ import lea.madebyfire.com.demologin.R;
 import lea.madebyfire.com.demologin.base.BaseActivity;
 import lea.madebyfire.com.demologin.interfaces.viewResponseDelegates.LoginViewDelegate;
 import lea.madebyfire.com.demologin.interfaces.viewResponseDelegates.MessageViewType;
+import lea.madebyfire.com.demologin.utils.SessionManager;
 import lea.madebyfire.com.demologin.viewModels.LoginViewModel;
 
 public class LoginActivity extends BaseActivity implements LoginViewDelegate {
-    LoginViewModel loginViewModel;
+
     private Context mContext;
-    private ProgressDialog dialog;
+
     private Button btnLogin;
     private Button btnRegister;
 
     private EditText textPhone;
     private EditText textPassword;
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
+
+    private ProgressDialog dialog;
+
+    private LoginViewModel loginViewModel;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +42,16 @@ public class LoginActivity extends BaseActivity implements LoginViewDelegate {
         setContentView(R.layout.activity_login);
         loginViewModel = new LoginViewModel(this);
         mContext = this;
-        initDialog();
-        initView();
-        setupListener();
-        initToolbar();
+        sessionManager = getApp().getUserPreference();
+        if(sessionManager.getUserLoginStatus()) {
+            initActivity(new Intent(mContext, HomeActivity.class));
+        } else {
+            initDialog();
+            initView();
+            setupListener();
+            initToolbar();
+        }
+
     }
 
     public void initToolbar() {
@@ -81,6 +93,7 @@ public class LoginActivity extends BaseActivity implements LoginViewDelegate {
 
     @Override
     public void launchHomeScreen() {
+        sessionManager.setUserLoginStatus(true);
         initActivity(new Intent(mContext, HomeActivity.class));
     }
 
