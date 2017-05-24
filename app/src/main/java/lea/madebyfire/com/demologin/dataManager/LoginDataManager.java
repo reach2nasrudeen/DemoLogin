@@ -31,7 +31,7 @@ public class LoginDataManager {
         service = getApp().getRetrofitInterface();
     }
 
-    public void doLogin(String phone, String password, final DataResponse<String> dataResponse) {
+    public void doLogin(String phone, String password, final DataResponse<String[]> dataResponse) {
         Call<ResponseBody> loginServiceCall = service.loginUser(phone, password);
         loginServiceCall.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -42,8 +42,9 @@ public class LoginDataManager {
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
 
+                        Log.e("Status", jsonObject.toString());
                         Log.e("Status", "Login Success");
-                        dataResponse.onSuccess(jsonObject.toString(), "Login Success");
+                        dataResponse.onSuccess(new String[]{jsonObject.toString()}, "Login Success");
                     } catch (JSONException | IOException e) {
                         e.printStackTrace();
                     }

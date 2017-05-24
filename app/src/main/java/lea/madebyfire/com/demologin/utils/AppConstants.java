@@ -8,7 +8,4 @@ public interface AppConstants {
     String PARAM_PASSWORD = "password";
     String PARAM_USERNAME = "name";
     String PARAM_USER_PHONE = "phone";
-    String PARAM_DEVICE_ID = "deviceId";
-    String PARAM_DEVICE_BRAND = "deviceBrand";
-    String PARAM_DEVICE_MODEL = "deviceModel";
 }

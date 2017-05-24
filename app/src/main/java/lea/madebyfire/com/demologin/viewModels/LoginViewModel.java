@@ -1,6 +1,7 @@
 package lea.madebyfire.com.demologin.viewModels;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import lea.madebyfire.com.demologin.dataManager.LoginDataManager;
 import lea.madebyfire.com.demologin.dataManager.callbacks.DataResponse;
@@ -32,16 +33,16 @@ public class LoginViewModel extends LoginBaseViewModel implements LoginDelegate 
         if (TextUtils.isEmpty(password)) {
             return;
         }
-        loginViewDelegate.launchHomeScreen();
-        /*loginViewDelegate.showProgressView(true);
-        loginDataManager.doLogin(phoneNo, password, new DataResponse<String>() {
+        loginViewDelegate.showProgressView(true);
+        loginDataManager.doLogin(phoneNo, password, new DataResponse<String[]>() {
             @Override
             public void onSuccess(String message) {
                 //No implementation
             }
 
             @Override
-            public void onSuccess(String item, String message) {
+            public void onSuccess(String[] item, String message) {
+                Log.e("Data", String.valueOf(item));
                 loginViewDelegate.showProgressView(false);
                 loginViewDelegate.launchHomeScreen();
             }
@@ -57,7 +58,7 @@ public class LoginViewModel extends LoginBaseViewModel implements LoginDelegate 
                 loginViewDelegate.showProgressView(false);
                 loginViewDelegate.showErrorMessage(errorMessage, MessageViewType.Toast);
             }
-        });*/
+        });
 
     }
 

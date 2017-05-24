@@ -3,7 +3,9 @@ package lea.madebyfire.com.demologin.viewModels;
 import android.text.TextUtils;
 
 import lea.madebyfire.com.demologin.dataManager.RegisterDataManager;
+import lea.madebyfire.com.demologin.dataManager.callbacks.DataResponse;
 import lea.madebyfire.com.demologin.interfaces.viewDelegates.RegisterDelegate;
+import lea.madebyfire.com.demologin.interfaces.viewResponseDelegates.MessageViewType;
 import lea.madebyfire.com.demologin.interfaces.viewResponseDelegates.RegisterViewDelegate;
 
 /**
@@ -29,6 +31,30 @@ public class RegisterViewModel extends RegisterBaseViewModel implements Register
             return;
         }
 
-        registerViewDelegate.onRegisterSuccess();
+        registerViewDelegate.showProgressView(true);
+        registerDataManager.doRegister(name, phone, password, new DataResponse<String>() {
+            @Override
+            public void onSuccess(String message) {
+                //No implementation
+            }
+
+            @Override
+            public void onSuccess(String item, String message) {
+                registerViewDelegate.showProgressView(false);
+                registerViewDelegate.onRegisterSuccess();
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                registerViewDelegate.showProgressView(false);
+                registerViewDelegate.showErrorMessage(errorMessage, MessageViewType.Toast);
+            }
+
+            @Override
+            public void onFailure(String errorMessage, String statusCode) {
+                registerViewDelegate.showProgressView(false);
+                registerViewDelegate.showErrorMessage(errorMessage, MessageViewType.Toast);
+            }
+        });
     }
 }

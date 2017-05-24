@@ -9,11 +9,12 @@ public class WebServiceURL {
 
     public WebServiceURL(){
 
-        BASE_URL = "http://192.168.1.24";
-        SERVICE_PATH = "/DemoApi/";
+        BASE_URL = "http://ragubathi.tk";
+        SERVICE_PATH = "/nas/v1/";
     }
 
     // Endpoints
 
     public static final String USER_REGISTER = "createUser";
+    public static final String LOGIN_REGISTER = "loginUser";
 }

@@ -14,13 +14,12 @@ public interface DemoApiInterface {
     // POST
     @FormUrlEncoded
     @POST(WebServiceURL.USER_REGISTER)
-    Call<ResponseBody> registerUser(@Field(AppConstants.PARAM_USER_PHONE) String phone,
-                                    @Field(AppConstants.PARAM_DEVICE_ID) String deviceId,
-                                    @Field(AppConstants.PARAM_DEVICE_BRAND) String deviceBrand,
-                                    @Field(AppConstants.PARAM_DEVICE_MODEL) String deviceModel);
+    Call<ResponseBody> registerUser(@Field(AppConstants.PARAM_USERNAME) String name,
+                                    @Field(AppConstants.PARAM_USER_PHONE) String phone,
+                                    @Field(AppConstants.PARAM_PASSWORD) String password);
 
     @FormUrlEncoded
-    @POST(WebServiceURL.USER_REGISTER)
+    @POST(WebServiceURL.LOGIN_REGISTER)
     Call<ResponseBody> loginUser(@Field(AppConstants.PARAM_USER_PHONE) String phone,
                                     @Field(AppConstants.PARAM_PASSWORD) String password);
 }
